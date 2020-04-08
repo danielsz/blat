@@ -10,6 +10,10 @@ Leverage pagination APIs with core.async.
 
 [[https://clojars.org/org.danielsz/blat/latest-version.svg]]
 
+*** Documentation
+
+This library is comprised of one function called [[https://cljdoc.org/d/org.danielsz/blat/0.1.6/api/blat.core][fetch]].
+
 ** Usage example
 
 *** Example I
@@ -35,7 +39,7 @@ It is then possible to quickly operate on any number of pages.
 
 #+begin_src clojure
 (require ' [blet.core :refer [fetch]])
-(fetch find 1 50)
+(fetch (partial movies "love") 1 50)
 #+end_src
 
 *Note:* ~start~ is inclusive, while ~end~ is exclusive, like Clojure's ~range~ function.
@@ -70,7 +74,7 @@ You can then use the ~blat~ library to retrieve all pages concurrently without k
 #+begin_src clojure
 (require ' [blet.core :refer [fetch]])
 (defn fetch-all [query]
-  (let [f (partial find query)
+  (let [f (partial movies query)
         {results :results total :total_pages} (f 1)]
     (fetch f 2 (inc total) results)))
 #+end_src
