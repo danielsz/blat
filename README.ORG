@@ -1,0 +1,25 @@
+* Installation
+
+
+* Usage example
+
+Given a function that knows how to operate on a page in a pagination API, for example, the tMDB API:
+
+#+begin_src clojure
+(defn find
+  ([query page]
+   (-> (client/get (str api-endpoint "/search/movie") {:query-params {"api_key" api-key
+                                                                     "query" query
+                                                                     "page" page}
+                                                      :as :json})
+      :body))
+  ([query page c]
+  (client/get (str api-endpoint "/search/movie") {:query-params {"api_key" api-key
+                                                                 "query" query
+                                                                 "page" page}
+                                                  :async? true
+                                                  :as :json}
+              (fn [resp] (a/onto-chan c (:results (:body resp))))
+              (fn [e] (a/>!! c (.getMessage e))))))
+#+end_src
+

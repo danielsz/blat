@@ -1,0 +1,22 @@
+{:pom {:group-id "org.danielsz"
+       :artifact-id "blat"
+       :version "0.1.0"
+       :name "blat"}
+ :packaging {:uberjar
+             {:enabled false
+              :build-properties {:main-class "blat.core"}
+              :excludes {:artifacts ["org.clojure:google-closure-library" "com.google.javascript:closure-compiler"]
+                         :filters ["META-INF/*.SF" "META-INF/*.DSA" "META-INF/*.RSA"]}
+              :include-source false
+              :obfuscation {:enabled false}
+              :graalvm {:enabled false
+                        :with-https false
+                        :bin-name ""}}
+             :jar {:enabled true
+                   :remote-repository {:id "clojars"
+                                       :url "https://clojars.org/repo"}}}
+ :interactive {:enabled true
+               :reload-on-save true
+               :tools-deps-alias :repl
+               :repl-port :auto
+               :repl-host "127.0.0.1"}}
