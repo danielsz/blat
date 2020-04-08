@@ -10,9 +10,9 @@ Leverage pagination APIs with core.async.
 
 [[https://clojars.org/org.danielsz/blat/latest-version.svg]]
 
-*** Documentation
+** Documentation
 
-This library is comprised of one function called [[https://cljdoc.org/d/org.danielsz/blat/0.1.6/api/blat.core][fetch]].
+This library is comprised of one function called [[https://cljdoc.org/d/org.danielsz/blat/0.1.7/api/blat.core][fetch]].
 
 ** Usage example
 
