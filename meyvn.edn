@@ -1,6 +1,6 @@
 {:pom {:group-id "org.danielsz"
        :artifact-id "blat"
-       :version "0.1.0"
+       :version "0.1.1"
        :name "blat"}
  :packaging {:uberjar
              {:enabled false
@@ -19,4 +19,5 @@
                :reload-on-save true
                :tools-deps-alias :repl
                :repl-port :auto
-               :repl-host "127.0.0.1"}}
+               :repl-host "127.0.0.1"}
+ :scm {:enabled true}}
