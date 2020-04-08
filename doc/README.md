@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [Definition](#orga9942b5)
-2.  [Installation](#org33759f1)
-3.  [Usage example](#orgd5c8906)
-4.  [Video tutorial](#org4164209)
-5.  [License](#org86b1474)
+1.  [Definition](#org53ea7e2)
+2.  [Installation](#org2a10038)
+3.  [Usage example](#orgf5d256a)
+4.  [Video tutorial](#orgc1e82f5)
+5.  [License](#orgad3cf40)
 
 
-<a id="orga9942b5"></a>
+<a id="org53ea7e2"></a>
 
 # Definition
 
 Leverage pagination APIs with core.async.
 
 
-<a id="org33759f1"></a>
+<a id="org2a10038"></a>
 
 # Installation
 
 ![img](https://clojars.org/org.danielsz/blat/latest-version.svg)
 
 
-<a id="orgd5c8906"></a>
+<a id="orgf5d256a"></a>
 
 # Usage example
 
@@ -52,17 +52,17 @@ You can then use the `blat` library to retrieve all pages concurrently.
     	{results :results total :total_pages} (f 1)]
         (fetch f 2 (inc total) results)))
 
-The first use of `find` is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the the number of total pages and the initial results. The second use of `find` is asynchronous via `fetch`, which internally calls it with an arity of 3, the third argument being a channel.
+The first use of `find` is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the number of total pages and the initial results. The second use of `find` is asynchronous via `fetch`, which internally calls it with an arity of 3, the third argument being a channel.
 
 
-<a id="org4164209"></a>
+<a id="orgc1e82f5"></a>
 
 # Video tutorial
 
 Please [refer](https://www.youtube.com/watch?v=1KRWfVhbBM8) to the miniseries available on Youtube, "Exploratory programming with the TMDb API". 
 
 
-<a id="org86b1474"></a>
+<a id="orgad3cf40"></a>
 
 # License
 

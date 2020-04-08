@@ -38,7 +38,7 @@ You can then use the ~blat~ library to retrieve all pages concurrently.
     (fetch f 2 (inc total) results)))
 #+end_src
 
-The first use of ~find~ is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the the number of total pages and the initial results. The second use of ~find~ is asynchronous via ~fetch~, which internally calls it with an arity of 3, the third argument being a channel.
+The first use of ~find~ is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the number of total pages and the initial results. The second use of ~find~ is asynchronous via ~fetch~, which internally calls it with an arity of 3, the third argument being a channel.
   
 * Video tutorial
 
