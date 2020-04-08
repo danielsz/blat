@@ -1,12 +1,17 @@
+* Definition
+
+Makes working with pagination APIs fast. Based on core.async.
+
 * Installation
 
+[[https://clojars.org/org.danielsz/blat/latest-version.svg]]
 
 * Usage example
 
 Given a function that knows how to operate on a page in a pagination API, for example, the tMDB API:
 
 #+begin_src clojure
-(defn find
+(defn movies
   ([query page]
    (-> (client/get (str api-endpoint "/search/movie") {:query-params {"api_key" api-key
                                                                      "query" query
@@ -23,3 +28,16 @@ Given a function that knows how to operate on a page in a pagination API, for ex
               (fn [e] (a/>!! c (.getMessage e))))))
 #+end_src
 
+You can then use the ~blat~ library to retrieve all pages concurrently. 
+
+#+begin_src clojure
+(require ' [blet.core :refer [fetch]])
+(defn fetch-all [query]
+  (let [f (partial find query)
+        {results :results total :total_pages} (f 1)]
+    (fetch f 2 (inc total) results)))
+#+end_src
+
+* Video tutorial
+
+Please [[https://www.youtube.com/watch?v=1KRWfVhbBM8][refer]] to the miniseries available on Youtube, "Exploratory programming with the TMDb API". 
