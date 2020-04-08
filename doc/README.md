@@ -1,19 +1,15 @@
-
-# Table of Contents
-
-1.  [Blat](#org91dfcc7)
-    1.  [Definition](#org99f8752)
-    2.  [Installation](#orgc806d76)
-    3.  [Usage example](#orgdc38d7a)
-    4.  [Video tutorial](#orge63cf97)
-    5.  [License](#org2b818fe)
-
-
-<a id="org91dfcc7"></a>
-
 # Blat
 
 In Yiddish, בלאַט means *page*.
+
+
+## Table of Contents
+
+1.  [Definition](#org99f8752)
+2.  [Installation](#orgc806d76)
+3.  [Usage example](#orgdc38d7a)
+4.  [Video tutorial](#orge63cf97)
+5.  [License](#org2b818fe)
 
 
 <a id="org99f8752"></a>
