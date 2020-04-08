@@ -1,43 +1,51 @@
 
 # Table of Contents
 
-1.  [Blat](#org6520625)
-    1.  [Definition](#org5926783)
-    2.  [Installation](#orgad3d36b)
-    3.  [Usage example](#org25fd880)
-        1.  [Example I](#org35bd5a1)
-        2.  [Example II](#orgd900f14)
-    4.  [Video tutorial](#org30393bd)
-    5.  [License](#orgcd56def)
+1.  [Blat](#org9b0e285)
+    1.  [Definition](#org9a2687e)
+    2.  [Installation](#org65abaa1)
+        1.  [Documentation](#org3e6df79)
+    3.  [Usage example](#orgd49f50d)
+        1.  [Example I](#org0043008)
+        2.  [Example II](#org584a8fc)
+    4.  [Video tutorial](#org378e4b8)
+    5.  [License](#org91ef53a)
 
 
-<a id="org6520625"></a>
+<a id="org9b0e285"></a>
 
 # Blat
 
 In Yiddish, בלאַט means *page*.
 
 
-<a id="org5926783"></a>
+<a id="org9a2687e"></a>
 
 ## Definition
 
 Leverage pagination APIs with core.async.
 
 
-<a id="orgad3d36b"></a>
+<a id="org65abaa1"></a>
 
 ## Installation
 
 ![img](https://clojars.org/org.danielsz/blat/latest-version.svg)
 
 
-<a id="org25fd880"></a>
+<a id="org3e6df79"></a>
+
+### Documentation
+
+This library is comprised of one function called [fetch](https://cljdoc.org/d/org.danielsz/blat/0.1.6/api/blat.core).
+
+
+<a id="orgd49f50d"></a>
 
 ## Usage example
 
 
-<a id="org35bd5a1"></a>
+<a id="org0043008"></a>
 
 ### Example I
 
@@ -58,12 +66,12 @@ Given a function that knows how to operate asynchronously on a page in a paginat
 It is then possible to quickly operate on any number of pages. 
 
     (require ' [blet.core :refer [fetch]])
-    (fetch find 1 50)
+    (fetch (partial movies "love") 1 50)
 
 **Note:** `start` is inclusive, while `end` is exclusive, like Clojure's `range` function.
 
 
-<a id="orgd900f14"></a>
+<a id="org584a8fc"></a>
 
 ### Example II
 
@@ -92,21 +100,21 @@ You can then use the `blat` library to retrieve all pages concurrently without k
 
     (require ' [blet.core :refer [fetch]])
     (defn fetch-all [query]
-      (let [f (partial find query)
+      (let [f (partial movies query)
     	{results :results total :total_pages} (f 1)]
         (fetch f 2 (inc total) results)))
 
 The first use of `find` is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the number of total pages and the initial results. The second use of `find` is asynchronous via `fetch`, which internally calls it with an arity of 3, the third argument being a channel.
 
 
-<a id="org30393bd"></a>
+<a id="org378e4b8"></a>
 
 ## Video tutorial
 
 Please [refer](https://www.youtube.com/watch?v=1KRWfVhbBM8) to the miniseries available on Youtube, "Exploratory programming with the TMDb API". 
 
 
-<a id="orgcd56def"></a>
+<a id="org91ef53a"></a>
 
 ## License
 
