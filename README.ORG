@@ -41,3 +41,9 @@ You can then use the ~blat~ library to retrieve all pages concurrently.
 * Video tutorial
 
 Please [[https://www.youtube.com/watch?v=1KRWfVhbBM8][refer]] to the miniseries available on Youtube, "Exploratory programming with the TMDb API". 
+
+* License
+
+Distributed under the [[http://opensource.org/licenses/eclipse-1.0.php][Eclipse Public License]] (the same as Clojure) together with the [[https://996.icu/#/en_US][966.icu]] [[https://github.com/996icu/996.ICU/blob/master/LICENSE][license]].
+
+[[https://img.shields.io/badge/link-996.icu-red.svg][https://img.shields.io/badge/link-996.icu-red.svg]]

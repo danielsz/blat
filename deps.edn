@@ -2,5 +2,4 @@
  :aliases {:repl {:extra-deps {nrepl {:mvn/version "0.7.0"}
                                cider/cider-nrepl {:mvn/version "0.24.0"}
                                cider/piggieback {:mvn/version "0.4.2"}
-                               org.danielsz/meyvn-nrepl-middleware {:mvn/version "1.1.0"}
                                org.danielsz/system {:mvn/version "0.4.5"}}}}}
