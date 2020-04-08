@@ -17,7 +17,8 @@ Leverage pagination APIs with core.async.
 Given a function that knows how to operate asynchronously on a page in a pagination API, for example, the tMDB API:
 
 #+begin_src clojure
-(require '[clojure.core.async :as a])
+(require '[clojure.core.async :as a]
+         '[clj-http.client :as client])
 
 (defn movies [query page c]
   (client/get (str api-endpoint "/search/movie") {:query-params {"api_key" api-key
@@ -44,7 +45,8 @@ It is then possible to quickly operate on any number of pages.
 Given a function that knows how to operate both synchronously and asynchronously on a page in a pagination API, for example, the tMDB API:
 
 #+begin_src clojure
-(require '[clojure.core.async :as a])
+(require '[clojure.core.async :as a]
+         '[clj-http.client :as client])
 
 (defn movies
   ([query page]
@@ -63,7 +65,7 @@ Given a function that knows how to operate both synchronously and asynchronously
               (fn [e] (a/>!! c (.getMessage e))))))
 #+end_src
 
-You can then use the ~blat~ library to retrieve all pages concurrently. 
+You can then use the ~blat~ library to retrieve all pages concurrently without knowing beforehand how many pages of results are available, leveraging the API instead. 
 
 #+begin_src clojure
 (require ' [blet.core :refer [fetch]])
