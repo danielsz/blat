@@ -1,6 +1,6 @@
 {:pom {:group-id "org.danielsz"
        :artifact-id "blat"
-       :version "0.1.4"
+       :version "0.1.5"
        :name "blat"}
  :packaging {:uberjar
              {:enabled false
