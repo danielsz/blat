@@ -12,9 +12,40 @@ Leverage pagination APIs with core.async.
 
 ** Usage example
 
-Given a function that knows how to operate on a page in a pagination API, for example, the tMDB API:
+*** Example I
+
+Given a function that knows how to operate asynchronously on a page in a pagination API, for example, the tMDB API:
 
 #+begin_src clojure
+(require '[clojure.core.async :as a])
+
+(defn movies [query page c]
+  (client/get (str api-endpoint "/search/movie") {:query-params {"api_key" api-key
+                                                                 "query" query
+                                                                 "page" page}
+                                                  :async? true
+                                                  :as :json}
+              (fn [resp] (a/onto-chan c (:results (:body resp))))
+              (fn [e] (a/>!! c (.getMessage e))))
+
+#+end_src
+
+It is then possible to quickly operate on any number of pages. 
+
+#+begin_src clojure
+(require ' [blet.core :refer [fetch]])
+(fetch find 1 50)
+#+end_src
+
+*Note:* ~start~ is inclusive, while ~end~ is exclusive, like Clojure's ~range~ function.
+
+*** Example II
+
+Given a function that knows how to operate both synchronously and asynchronously on a page in a pagination API, for example, the tMDB API:
+
+#+begin_src clojure
+(require '[clojure.core.async :as a])
+
 (defn movies
   ([query page]
    (-> (client/get (str api-endpoint "/search/movie") {:query-params {"api_key" api-key
