@@ -44,6 +44,12 @@ It is then possible to quickly operate on any number of pages.
 
 *Note:* ~start~ is inclusive, while ~end~ is exclusive, like Clojure's ~range~ function.
 
+You only want a select number of fields from the response?
+
+#+begin_src clojure
+(fetch (partial movies "love") 1 50 [] (map (juxt :title :original_language)) 
+#+end_src
+
 *** Example II
 
 Given a function that knows how to operate both synchronously and asynchronously on a page in a pagination API, for example, the tMDB API:
@@ -81,6 +87,8 @@ You can then use the ~blat~ library to retrieve all pages concurrently without k
 
 The first use of ~find~ is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the number of total pages and the initial results. The second use of ~find~ is asynchronous via ~fetch~, which internally calls it with an arity of 3, the third argument being a channel.
   
+
+
 ** Video tutorial
 
 Please [[https://www.youtube.com/watch?v=1KRWfVhbBM8][refer]] to the miniseries available on Youtube, "Exploratory programming with the TMDb API". 
