@@ -38,7 +38,7 @@ Given a function that knows how to operate asynchronously on a page in a paginat
 It is then possible to quickly operate on any number of pages. 
 
 #+begin_src clojure
-(require ' [blet.core :refer [fetch]])
+(require ' [blat.core :refer [fetch]])
 (fetch (partial movies "love") 1 50)
 #+end_src
 
@@ -78,7 +78,7 @@ Given a function that knows how to operate both synchronously and asynchronously
 You can then use the ~blat~ library to retrieve all pages concurrently without knowing beforehand how many pages of results are available, leveraging the API instead. 
 
 #+begin_src clojure
-(require ' [blet.core :refer [fetch]])
+(require ' [blat.core :refer [fetch]])
 (defn fetch-all [query]
   (let [f (partial movies query)
         {results :results total :total_pages} (f 1)]
