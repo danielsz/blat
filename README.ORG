@@ -75,7 +75,9 @@ Given a function that knows how to operate both synchronously and asynchronously
               (fn [e] (a/>!! c (.getMessage e))))))
 #+end_src
 
-You can then use the ~blat~ library to retrieve all pages concurrently without knowing beforehand how many pages of results are available, leveraging the API instead. 
+You can then use the ~blat~ library to retrieve all pages concurrently without knowing beforehand how many pages of results are available, leveraging the API instead.
+
+*Note:* If you're working with an API that defines pagination in terms of /offset/ and /limit/, the equivalence to pages should be straightforward. 
 
 #+begin_src clojure
 (require ' [blat.core :refer [fetch]])
@@ -86,8 +88,6 @@ You can then use the ~blat~ library to retrieve all pages concurrently without k
 #+end_src
 
 The first use of ~find~ is synchronous. It is called with two arguments, query and the first page of results. The results are destructured to get the number of total pages and the initial results. The second use of ~find~ is asynchronous via ~fetch~, which internally calls it with an arity of 3, the third argument being a channel.
-  
-
 
 ** Video tutorial
 
