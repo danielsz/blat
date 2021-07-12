@@ -77,7 +77,7 @@ Given a function that knows how to operate both synchronously and asynchronously
 
 You can then use the ~blat~ library to retrieve all pages concurrently without knowing beforehand how many pages of results are available, leveraging the API instead.
 
-*Note:* If you're working with an API that defines pagination in terms of /offset/ and /limit/, the equivalence to pages should be straightforward. 
+*Note:* If you're working with an API that defines pagination in terms of /offset/ and /limit/, the equivalence to a page unit should be straightforward. 
 
 #+begin_src clojure
 (require ' [blat.core :refer [fetch]])
